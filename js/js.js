@@ -10,7 +10,7 @@ angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
     var count = 0;
     var limit = 12;
 
-    $http.get('http://pokeapi.co/api/v1/pokemon/?limit=12')
+    $http.get('https://pokeapi.co/api/v1/pokemon/?limit=12')
         .then(function (response) {
             for (var i = 0; i < limit; ++i) {
                 $scope.images[i] = [response.data.objects[i].national_id, response.data.objects[i].types, response.data.objects[i].name];
@@ -23,7 +23,7 @@ angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
 
     $scope.loadMoreClick = function () {
         ++count;
-        $http.get('http://pokeapi.co/api/v1/pokemon/?limit=12&offset=' + (limit * count))
+        $http.get('https://pokeapi.co/api/v1/pokemon/?limit=12&offset=' + (limit * count))
             .then(function (response) {
 
                 for (var i = 0; i < limit; ++i) {
@@ -39,7 +39,7 @@ angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
         $scope.visibVal = false;
         $scope.loaded = false;
         $scope.types = [];
-        $http.get('http://pokeapi.co/api/v1/pokemon/?limit=' + (limit + limit * count))
+        $http.get('https://pokeapi.co/api/v1/pokemon/?limit=' + (limit + limit * count))
             .then(function (response) {
                 for (var i = 0; i < limit + limit * count; ++i) {
                     if (img[0] === response.data.objects[i].national_id) {
