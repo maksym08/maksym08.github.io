@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="max-age=3600, must-revalidate" />
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/js.js"></script>
+</head>
+<body>
+<header class="page-header">
+    <h1 class="header">
+        Pokedex
+    </h1>
+</header>
+<section ng-app="app" ng-controller="galleryCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 search" >
+                    Search by type:
+                    <input type="text" ng-model="search">
+            </div>
+        </div>
+        <div class="row">
+
+        <div class="col-xs-8 col-sm-8 col-md-8 pokemonList" >
+            <div ng-hide="loaded" class="loading">
+                <img src="images/LoadingIcon.gif" alt="Loading...">
+            </div>
+            <div ng-show="loaded">
+                <div class="pokemonItems">
+                    <ul class="list-group">
+                        <li ng-repeat="img in images | filter: search" class="list-group-item pokemonItem" scroll-to-item scroll-to="#pokInfo" ng-click="onClick(img)">
+                            <!--<img ng-src="http://pokeapi.co/media/img/{{img[0]}}.png" alt="">-->
+                            <img src="images/img.png" alt="">
+                            <h4>{{img[2]}}</h4>
+                            <button type="button" title="Poison" value="Poison" class="btn btn-primary type1">{{img[1][0].name}}</button>
+                            <button type="button" title="Grass" value="Grass" class="btn btn-primary type2" ng-if="img[1][1] !== undefined">{{img[1][1].name}}</button>
+                        </li>
+                    </ul>
+                    <button ng-click="loadMoreClick()" type="button" title="Load more" value="Load More" class="btn btn-primary loadMore">Load More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4" scrollspy>
+            <div id="pokInfo" class="pokemonInfo ng-hide" ng-hide="visibVal" data-spy="affix">
+                <img src="images/img.png" alt="">
+                <h4>{{pokemonName}}</h4>
+                <div ng-hide="loaded" class="loading">
+                    <img class="loadingImg" src="images/LoadingIcon.gif" alt="Loading...">
+                </div>
+                <div ng-show="loaded">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                        <tr ng-repeat="type in types">
+                            <td>{{type.name}}</td>
+                            <td>{{type.value}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+            </div>
+    </div>
+</section>
+
+
+</body>
+</html>
