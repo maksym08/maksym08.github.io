@@ -35,7 +35,7 @@
                 <div class="pokemonItems">
                     <ul class="list-group">
                         <li ng-repeat="img in images | filter: search" class="list-group-item pokemonItem" scroll-to-item scroll-to="#pokInfo" ng-click="onClick(img)">
-                            <a ng-href="http://pokeapi.co/media/img/{{img[0]}}.png"><img src="images/img.png" alt=""></a>
+                            <a ng-href="http://pokeapi.co/media/img/{{img[0]}}.png"><img src="http://pokeapi.co/media/img/{{img[0]}}.png" alt=""></a>
                             <h4>{{img[2]}}</h4>
                             <p class="btn type1">{{img[1][0].name}}</p>
                             <p class="btn type2" ng-if="img[1][1] !== undefined">{{img[1][1].name}}</p>
