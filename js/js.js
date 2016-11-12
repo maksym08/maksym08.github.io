@@ -1,12 +1,12 @@
 /**
  * Created by maksy on 11/10/2016.
  */
-
-angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
+angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
 
     $scope.images = [];
     $scope.visibVal = true;
     $scope.loaded = false;
+    $scope.loadedMore = true;
     var count = 0;
     var limit = 12;
 
@@ -17,23 +17,24 @@ angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
             }
             $scope.loaded = true;
         })
-        .catch(function (data) {
+        .catch(function () {
             console.error("GET JSON ERROR");
         });
 
     $scope.loadMoreClick = function () {
         ++count;
+        $scope.loadedMore = false;
         $http.get('https://pokeapi.co/api/v1/pokemon/?limit=12&offset=' + (limit * count))
             .then(function (response) {
-
                 for (var i = 0; i < limit; ++i) {
                     $scope.images[limit * count + i] = [response.data.objects[i].national_id, response.data.objects[i].types, response.data.objects[i].name];
                 }
+                $scope.loadedMore = true;
             })
-            .catch(function (data) {
+            .catch(function () {
                 console.error("GET JSON ERROR");
             });
-    }
+    };
 
     $scope.onClick = function (img) {
         $scope.visibVal = false;
@@ -81,7 +82,7 @@ angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
                 }
                 $scope.loaded = true;
             })
-            .catch(function (data) {
+            .catch(function () {
                 console.error("GET JSON ERROR");
             });
     };
@@ -93,10 +94,10 @@ angular.module('app', []).controller('galleryCtrl', function ($scope, $http) {
             scope: {
                 scrollTo: "@"
             },
-            link: function (scope, $elm, attr) {
+            link: function (scope, $elm) {
 
                 $elm.on('click', function () {
-                    $('html,body').animate({scrollTop: $(scope.scrollTo).offset().top - 50}, "slow");
+                    $('html,body').animate({scrollTop: $(scope.scrollTo).offset().top}, "slow");
                 });
             }
         }
