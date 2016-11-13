@@ -32,7 +32,7 @@ body {
 }
 
 .col-md-4, .col-sm-4, .col-xs-4 {
-    margin-top: 2%;
+    margin-top: 1em;
 }
 
 .col-md-8, .col-sm-8, .col-xs-8 {
@@ -43,6 +43,11 @@ body {
     width: 200px;
     margin: auto 0;
     border: 1px black solid;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .affix {
@@ -88,6 +93,7 @@ td {
     font-weight: 500;
     font-size: 15px;
     font-style: italic;
+    margin-left: 13px;
 }
 
 .loadingMoreImg {
@@ -157,7 +163,7 @@ section {
     }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1121px) {
+@media screen and (min-width: 992px) and (max-width: 1122px) {
     .loadingMoreImg {
         margin-left: 120px;
     }
@@ -177,7 +183,7 @@ section {
     }
 }
 
-@media screen and (min-width: 1122px) {
+@media screen and (min-width: 1123px) {
     .loadingMoreImg {
         margin-left: 80px;
     }
@@ -199,7 +205,7 @@ section {
 
 @media screen and (min-width: 1200px) {
     .loadingMoreImg {
-        margin-left: 80px;
+        margin-left: 200px;
     }
 
     .loadMore {
