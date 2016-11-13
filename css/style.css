@@ -213,6 +213,13 @@ section {
     }
 }
 
+@media screen and (max-width: 352px) {
+    .col-md-4, .col-sm-4, .col-xs-4 {
+        padding-left: 0;
+        margin-top: 0.3em;
+    }
+}
+
 @media screen and (max-width: 552px) {
     .pokemonInfo {
         width: 100px;
@@ -236,6 +243,10 @@ section {
 
     .loadMore {
         width: 160px;
+    }
+
+    .col-md-4, .col-sm-4, .col-xs-4 {
+        margin-top: 0.4em;
     }
 }
 
