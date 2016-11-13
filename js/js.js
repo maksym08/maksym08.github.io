@@ -1,6 +1,3 @@
-/**
- * Created by maksy on 11/10/2016.
- */
 angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
 
     $scope.images = [];
@@ -21,11 +18,11 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
                 .then(function (response) {
                     for (var i = 0; i < limit; ++i) {
                         $scope.images[i] = [response.data.objects[i].national_id, response.data.objects[i].types, response.data.objects[i].name];
-                        for(var j=0; j< $scope.fireTypes.length; ++j) {
-                            if($scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[0].name) {
+                        for (var j = 0; j < $scope.fireTypes.length; ++j) {
+                            if ($scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[0].name) {
                                 $scope.images[i][1][0].color = $scope.fireTypes[j][1];
                             }
-                            if(response.data.objects[i].types[1] && $scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[1].name) {
+                            if (response.data.objects[i].types[1] && $scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[1].name) {
                                 $scope.images[i][1][1].color = $scope.fireTypes[j][1];
                             }
                         }
@@ -40,10 +37,10 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
             console.error("GET JSON ERROR");
         });
 
-    var getRandomColor = function() {
+    var getRandomColor = function () {
         var letters = '0123456789ABCDEF';
         var color = '#';
-        for (var i = 0; i < 6; i++ ) {
+        for (var i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }
         return color;
@@ -56,11 +53,11 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
             .then(function (response) {
                 for (var i = 0; i < limit; ++i) {
                     $scope.images[limit * count + i] = [response.data.objects[i].national_id, response.data.objects[i].types, response.data.objects[i].name];
-                    for(var j=0; j< $scope.fireTypes.length; ++j) {
-                        if($scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[0].name) {
+                    for (var j = 0; j < $scope.fireTypes.length; ++j) {
+                        if ($scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[0].name) {
                             $scope.images[limit * count + i][1][0].color = $scope.fireTypes[j][1];
                         }
-                        if(response.data.objects[i].types[1] && $scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[1].name) {
+                        if (response.data.objects[i].types[1] && $scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[1].name) {
                             $scope.images[limit * count + i][1][1].color = $scope.fireTypes[j][1];
                         }
                     }
@@ -82,7 +79,7 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
                     if (img[0] === response.data.objects[i].national_id) {
                         $scope.pokemonName = response.data.objects[i].name;
                         $scope.pokemonId = response.data.objects[i].national_id;
-                        
+
                         $scope.types.push({
                             "name": "Attack",
                             "value": response.data.objects[i].attack

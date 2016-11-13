@@ -27,9 +27,8 @@ body {
 
 .pokemonItem p {
     background: -webkit-linear-gradient(transparent, white, transparent);
-    background: -webkit-linear-gradient(transparent, white, transparent);
-    background: -webkit-linear-gradient(transparent, white, transparent);
-    background: -webkit-linear-gradient(transparent, white, transparent);
+    background: -moz-linear-gradient(transparent, white, transparent);
+    background: -o-linear-gradient(transparent, white, transparent);
 }
 
 .col-md-4, .col-sm-4, .col-xs-4 {
@@ -97,7 +96,8 @@ td {
 }
 
 .loadingImg {
-    width: 100px;
+    width: 100px !important;
+    height: 100px !important;
 }
 
 .page-header {
