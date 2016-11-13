@@ -1,5 +1,7 @@
 body {
     position: relative;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .pokemonItem {
@@ -19,6 +21,10 @@ body {
     opacity: 0.7;
 }
 
+.pokemonItem img {
+    height: 100%;
+}
+
 .col-md-4, .col-sm-4, .col-xs-4 {
     margin-top: 2%;
 }
@@ -29,8 +35,12 @@ body {
 
 .pokemonInfo {
     width: 200px;
-    margin: auto;
+    margin: auto 0;
     border: 1px black solid;
+}
+
+.affix {
+    top: 20px;
 }
 
 img {
@@ -107,16 +117,8 @@ section {
         width: 200px;
     }
 
-    .pokemonInfo img {
-        width: 80%;
-    }
-
     .pokemonItem {
         width: 150px;
-    }
-
-    .pokemonItem img {
-        width: 80%;
     }
 
     .type1 {
@@ -138,11 +140,33 @@ section {
     .loadMore {
         width: 280px;
     }
+
+    .pokemonItem img {
+        height: 50px;
+    }
+
+    .pokemonInfo img {
+        height: 50px;
+    }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1121px) {
     .loadingMoreImg {
         margin-left: 120px;
+    }
+
+    .loadMore {
+        width: 450px;
+    }
+
+    .pokemonItem img {
+        height: 100px;
+        width: auto;
+    }
+
+    .pokemonInfo img {
+        height: 100px;
+        width: auto;
     }
 }
 
@@ -153,6 +177,26 @@ section {
 
     .loadMore {
         width: 350px;
+    }
+
+    .pokemonItem img {
+        height: 150px;
+        width: auto;
+    }
+
+    .pokemonInfo img {
+        height: 150px;
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .loadingMoreImg {
+        margin-left: 80px;
+    }
+
+    .loadMore {
+        width: 570px;
     }
 }
 
@@ -169,12 +213,49 @@ section {
         font-size: 12px;
     }
 
-    .pokemonItem button {
+    .pokemonItem p {
         font-size: 6px;
     }
 
     .table {
         font-size: 8px;
+    }
+
+    .loadMore {
+        width: 160px;
+    }
+}
+
+@media screen and (max-height: 652px) {
+    .pokemonInfo {
+        width: 100px;
+    }
+
+    .pokemonItem {
+        width: 100px;
+    }
+
+    .pokemonItem h4 {
+        font-size: 12px;
+    }
+
+    .pokemonItem p {
+        font-size: 6px;
+    }
+
+    .table {
+        font-size: 8px;
+        overflow: auto;
+    }
+
+    thead, tbody {
+        display: block;
+    }
+
+    tbody {
+        height: 50px;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .loadMore {

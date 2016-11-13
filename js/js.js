@@ -45,6 +45,7 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
                 for (var i = 0; i < limit + limit * count; ++i) {
                     if (img[0] === response.data.objects[i].national_id) {
                         $scope.pokemonName = response.data.objects[i].name;
+                        $scope.pokemonId = response.data.objects[i].national_id;
                         
                         $scope.types.push({
                             "name": "Attack",
