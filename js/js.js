@@ -14,7 +14,7 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
     $http.get('https://pokeapi.co/api/v1/type/?limit=999')
         .then(function (response) {
             for (var i = 0; i < response.data.objects.length; ++i) {
-                $scope.fireTypes[i] = [response.data.objects[i].name, getRamdomColor()];
+                $scope.fireTypes[i] = [response.data.objects[i].name, getRandomColor()];
             }
 
             $http.get('https://pokeapi.co/api/v1/pokemon/?limit=12')
@@ -22,7 +22,6 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
                     for (var i = 0; i < limit; ++i) {
                         $scope.images[i] = [response.data.objects[i].national_id, response.data.objects[i].types, response.data.objects[i].name];
                         for(var j=0; j< $scope.fireTypes.length; ++j) {
-                            console.log($scope.fireTypes[j][0].toLowerCase(),  response.data.objects[i].types[0].name);
                             if($scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[0].name) {
                                 $scope.images[i][1][0].color = $scope.fireTypes[j][1];
                             }
@@ -41,7 +40,7 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
             console.error("GET JSON ERROR");
         });
 
-    var getRamdomColor = function() {
+    var getRandomColor = function() {
         var letters = '0123456789ABCDEF';
         var color = '#';
         for (var i = 0; i < 6; i++ ) {
@@ -57,6 +56,14 @@ angular.module('app', []).controller('iconsCtrl', function ($scope, $http) {
             .then(function (response) {
                 for (var i = 0; i < limit; ++i) {
                     $scope.images[limit * count + i] = [response.data.objects[i].national_id, response.data.objects[i].types, response.data.objects[i].name];
+                    for(var j=0; j< $scope.fireTypes.length; ++j) {
+                        if($scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[0].name) {
+                            $scope.images[limit * count + i][1][0].color = $scope.fireTypes[j][1];
+                        }
+                        if(response.data.objects[i].types[1] && $scope.fireTypes[j][0].toLowerCase() === response.data.objects[i].types[1].name) {
+                            $scope.images[limit * count + i][1][1].color = $scope.fireTypes[j][1];
+                        }
+                    }
                 }
                 $scope.loadedMore = true;
             })
