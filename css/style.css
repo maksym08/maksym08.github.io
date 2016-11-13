@@ -25,6 +25,13 @@ body {
     height: 100%;
 }
 
+.pokemonItem p {
+    background: -webkit-linear-gradient(transparent, white, transparent);
+    background: -webkit-linear-gradient(transparent, white, transparent);
+    background: -webkit-linear-gradient(transparent, white, transparent);
+    background: -webkit-linear-gradient(transparent, white, transparent);
+}
+
 .col-md-4, .col-sm-4, .col-xs-4 {
     margin-top: 2%;
 }
