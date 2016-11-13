@@ -261,4 +261,14 @@ section {
     .loadMore {
         width: 160px;
     }
+
+    .pokemonItem img {
+        height: 50px;
+        width: auto;
+    }
+
+    .pokemonInfo img {
+        height: 70px;
+        width: auto;
+    }
 }
